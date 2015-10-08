@@ -5,13 +5,11 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import com.zws.user.beans.User;
 import com.zws.user.dao.UserDao;
 import com.zws.user.service.UserService;
 @Service
-@Transactional
 public class UserServiceImpl implements UserService{
 	@Autowired
 	@Qualifier("userDaoImpl")
