@@ -28,4 +28,10 @@ public class UserController {
 		view.addObject("users", users);
 		return view;
 	}
+	
+	@RequestMapping(value="/index.htm")
+	public ModelAndView index() {
+		ModelAndView view = new ModelAndView("index");
+		return view;
+	}
 }
