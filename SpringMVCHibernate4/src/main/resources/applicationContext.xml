@@ -48,7 +48,6 @@
 	<bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
-	<!---->
 	
 <!-- 	   声明式容器事务管理 ,transaction-manager指定事务管理器为transactionManager  -->
     <tx:advice id="txAdvice" transaction-manager="transactionManager">
