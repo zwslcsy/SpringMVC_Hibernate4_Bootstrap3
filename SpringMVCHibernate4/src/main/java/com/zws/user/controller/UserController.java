@@ -2,6 +2,7 @@ package com.zws.user.controller;
 
 import java.util.List;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -14,6 +15,8 @@ import com.zws.user.service.UserService;
 @Controller
 @RequestMapping("/user")
 public class UserController {
+	
+	private Logger log = Logger.getLogger(UserController.class);
 
 	@Autowired
 	@Qualifier("userServiceImpl")
@@ -26,6 +29,7 @@ public class UserController {
 		List<User> users = service.queryUsers(user);
 		ModelAndView view = new ModelAndView("user/jsp/home");
 		view.addObject("users", users);
+		log.info("query users...");
 		return view;
 	}
 	
