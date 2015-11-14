@@ -16,11 +16,10 @@ import com.zws.user.service.UserService;
 @RequestMapping("/user")
 public class UserController {
 	
-	private Logger log = Logger.getLogger(UserController.class);
-
 	@Autowired
 	@Qualifier("userServiceImpl")
 	private UserService service;
+	private Logger logger = Logger.getLogger("major");
 	
 	@RequestMapping(value="/login.htm")
 	public ModelAndView login(User user) {
@@ -29,12 +28,15 @@ public class UserController {
 		List<User> users = service.queryUsers(user);
 		ModelAndView view = new ModelAndView("user/jsp/home");
 		view.addObject("users", users);
-		log.info("query users...");
 		return view;
 	}
 	
 	@RequestMapping(value="/index.htm")
 	public ModelAndView index() {
+		for (int i = 0; i < 20; i++) {
+			logger.info("jijiiji");
+		}
+		
 		ModelAndView view = new ModelAndView("index");
 		return view;
 	}

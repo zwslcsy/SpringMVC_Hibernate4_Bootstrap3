@@ -2,6 +2,7 @@ package com.zws.user.dao.impl;
 
 import java.util.List;
 
+import org.apache.log4j.Logger;
 import org.springframework.stereotype.Repository;
 
 import com.zws.user.beans.User;
@@ -9,13 +10,14 @@ import com.zws.user.dao.BaseDao;
 import com.zws.user.dao.UserDao;
 @Repository
 public class UserDaoImpl extends BaseDao<User> implements UserDao {
-
+	private Logger log = Logger.getLogger(UserDaoImpl.class);
 	public void save(User user) {
 		super.save(user);
 	}
 
 	public List<User> queryUsers(User user) {
 		String hql = "FROM User WHERE state = " + user.getState();
+		log.info("hql:" + hql);
 		return queryList(hql);
 	}
 
