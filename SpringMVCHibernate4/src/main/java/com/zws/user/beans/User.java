@@ -33,8 +33,8 @@ public class User {
 	@Column(name="UPDATE_TIME")
 	private Date updateTime;
 	
-	@Column(name="DECRIBE")
-	private String describe;
+	@Column(name="DECRIPTION")
+	private String description;
 
 	public Long getId() {
 		return id;
@@ -85,17 +85,17 @@ public class User {
 	}
 
 	public String getDescribe() {
-		return describe;
+		return description;
 	}
 
 	public void setDescribe(String describe) {
-		this.describe = describe;
+		this.description = describe;
 	}
 
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", userName=" + userName + ", passwd="
 				+ passwd + ", state=" + state + ", createTime=" + createTime
-				+ ", updateTime=" + updateTime + ", describe=" + describe + "]";
+				+ ", updateTime=" + updateTime + ", describe=" + description + "]";
 	}
 }

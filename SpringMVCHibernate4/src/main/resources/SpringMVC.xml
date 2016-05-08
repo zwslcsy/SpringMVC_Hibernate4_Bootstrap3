@@ -13,6 +13,7 @@
 	<context:component-scan base-package="com.zws" use-default-filters="false">
 	  	<context:include-filter type="annotation" expression="org.springframework.stereotype.Controller" />
 	</context:component-scan>
+	 
 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 	    <property name="prefix" value="/view/"></property>
 	    <property name="suffix" value=".jsp"></property>

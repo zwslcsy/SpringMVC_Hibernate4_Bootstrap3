@@ -30,12 +30,12 @@ public class MyRollingFileAppender extends RollingFileAppender {
 
 		boolean renameSucceeded = true;
 		if (maxBackupIndex > 0) {
-			//É¾³ýÐòºÅ×î´ó£¨×îÔçµÄÎÄ¼þ£©µÄÎÄ¼þ
+			//åˆ é™¤åºå·æœ€å¤§ï¼ˆæœ€æ—©çš„æ–‡ä»¶ï¼‰çš„æ–‡ä»¶
 			file = new File(genFileName(fileName, maxBackupIndex));
 			if (file.exists())
 				renameSucceeded = file.delete();
 
-			//ËùÓÐÎÄ¼þÃûÐòºÅ¼Ó1
+			//æ‰€æœ‰æ–‡ä»¶ååºå·åŠ 1
 			for (int i = maxBackupIndex - 1; i >= 1 && renameSucceeded; i--) {
 				file = new File(genFileName(fileName, i));
 				if (file.exists()) {

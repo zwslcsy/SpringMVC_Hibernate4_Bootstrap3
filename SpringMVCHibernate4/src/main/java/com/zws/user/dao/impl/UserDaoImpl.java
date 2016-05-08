@@ -16,7 +16,7 @@ public class UserDaoImpl extends BaseDao<User> implements UserDao {
 	}
 
 	public List<User> queryUsers(User user) {
-		String hql = "FROM User WHERE state = " + user.getState();
+		String hql = "FROM User WHERE state = " + user.getState() + " and id <= 20";
 		log.info("hql:" + hql);
 		return queryList(hql);
 	}
