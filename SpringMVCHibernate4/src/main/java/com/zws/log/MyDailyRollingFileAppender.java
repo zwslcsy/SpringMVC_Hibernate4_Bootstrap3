@@ -3,7 +3,7 @@ package com.zws.log;
 import org.apache.log4j.DailyRollingFileAppender;
 import org.apache.log4j.Priority;
 /**
- * µÈ¼¶ÎªERRORµÄÈÕÖ¾µ¥¶ÀÔÚÒ»¸öÎÄ¼şÀïÃæ
+ * ç­‰çº§ä¸ºERRORçš„æ—¥å¿—å•ç‹¬åœ¨ä¸€ä¸ªæ–‡ä»¶é‡Œé¢
  * @author wensh.zhu
  *
  */
@@ -12,7 +12,7 @@ public class MyDailyRollingFileAppender extends DailyRollingFileAppender {
 	public boolean isAsSevereAsThreshold(Priority priority) {
 		String level = priority.toString();
 		if (level.equalsIgnoreCase("ERROR")) {
-			//this.getThreshold()¼´ÎªÅäÖÃÎÄ¼şÖĞThresholdÊôĞÔ
+			//this.getThreshold()å³ä¸ºé…ç½®æ–‡ä»¶ä¸­Thresholdå±æ€§
 			return this.getThreshold().equals(priority);
 		}
 		return super.isAsSevereAsThreshold(priority);
