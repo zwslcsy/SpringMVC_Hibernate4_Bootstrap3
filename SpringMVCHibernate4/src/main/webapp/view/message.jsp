@@ -5,18 +5,32 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<style type="text/css">
+.diff{
+	margin-top: 10px;
+	background-color: #E6E2EB;
+}
+</style>
 </head>
 <body>
-	
-		<div class="dropdown">
-		  <button id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-		    Dropdown trigger
-		    <span class="caret"></span>
-		  </button>
-		  <ul class="dropdown-menu" aria-labelledby="dLabel">
-		    <li>action</li>
-		  </ul>
+	<div class="container">
+		<div class="row diff">
+			<div class="dropdown">
+			  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+			    Dropdown
+			    <span class="caret"></span>
+			  </button>
+			  <ul class="dropdown-menu col-md-1">
+			    <li><a href="#">Action</a></li>
+			    <li><a href="#">Anoth</a></li>
+			    <li><a href="#">Someth</a></li>
+			    <li><a href="#">Separ4444444444fwefwer</a></li>
+			  </ul>
+			</div>
 		</div>
+		
+	</div>
+		
 	
 	
 	<li role="presentation" class="dropdown">

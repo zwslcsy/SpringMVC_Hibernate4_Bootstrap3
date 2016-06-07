@@ -1,2 +1,6 @@
 eclipse.preferences.version=1
 encoding//src/main/resources/db_info.properties=UTF-8
+encoding//src/main/webapp/view/user/jsp/home.jsp=UTF-8
+encoding//src/test/java/user/UserTest.java=UTF-8
+encoding//src/test/java/user/rest/UserRestControllerTest.java=UTF-8
+encoding/<project>=UTF-8

@@ -7,10 +7,9 @@ import org.springframework.stereotype.Repository;
 
 import com.zws.user.beans.User;
 import com.zws.user.dao.BaseDao;
-import com.zws.user.dao.UserDao;
 @Repository
-public class UserDaoImpl extends BaseDao<User> implements UserDao {
-	private Logger log = Logger.getLogger(UserDaoImpl.class);
+public class UserDao extends BaseDao<User> {
+	private Logger log = Logger.getLogger(UserDao.class);
 	public void save(User user) {
 		super.save(user);
 	}
@@ -20,10 +19,14 @@ public class UserDaoImpl extends BaseDao<User> implements UserDao {
 		log.info("hql:" + hql);
 		return queryList(hql);
 	}
-
+	
 	public Integer querySize(User user) {
 		String sql = "SELECT COUNT(*) FROM USER WHERE STATE = " + user.getState();
 		return getCount(sql);
+	}
+
+	public List<User> getUsers(User user) {
+		return null;
 	}
 
 }

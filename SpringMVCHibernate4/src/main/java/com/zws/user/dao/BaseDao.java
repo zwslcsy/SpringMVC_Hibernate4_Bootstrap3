@@ -1,5 +1,6 @@
 package com.zws.user.dao;
 
+import java.io.Serializable;
 import java.math.BigInteger;
 import java.util.List;
 
@@ -19,6 +20,11 @@ public class BaseDao<T> {
 		getSession().save(entity);
 	}
 	
+	@SuppressWarnings("unchecked")
+	public T get(Class<T> clz, Serializable id) {
+		return (T) getSession().load(clz, id);
+	}
+	
 	public Session getSession() {
 		return sessionFactory.getCurrentSession();
 	}
@@ -26,6 +32,10 @@ public class BaseDao<T> {
 	@SuppressWarnings("unchecked")
 	public List<T> queryList(String hql) {
 		return getSession().createQuery(hql).list();	
+	}
+	@SuppressWarnings("unchecked")
+	public T queryUnique(String hql) {
+		return (T) getSession().createQuery(hql).uniqueResult();	
 	}
 	
 	@SuppressWarnings("unchecked")

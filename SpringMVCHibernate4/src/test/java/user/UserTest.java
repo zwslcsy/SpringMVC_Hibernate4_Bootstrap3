@@ -1,6 +1,7 @@
 package user;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -13,26 +14,38 @@ import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 
+import com.zws.user.beans.Address;
 import com.zws.user.beans.User;
-import com.zws.user.service.UserService;
+import com.zws.user.service.impl.UserService;
 
 import hibernate.BaseTest;
 
 public class UserTest extends BaseTest{
 	@Autowired
-	@Qualifier("userServiceImpl")
 	private UserService service;
 
 	@Test
 	public void save() {
 		User user = new User();
-		user.setUserName("zws000003");
+		user.setUserName("刘德华");
 		user.setPasswd("5y4y5u68i778");
 		user.setState(1);
 		user.setCreateTime(new Date());
 		user.setUpdateTime(new Date());
+		
+		Address addr1 = new Address();
+		addr1.setAddr("浙江杭州滨江中兴和园");
+		
+		Address addr2 = new Address();
+		addr2.setAddr("浙江杭州滨江大话科技");
+		
+		List<Address> addrs = new ArrayList<Address>();
+		addrs.add(addr1);
+		addrs.add(addr2);
+		
+		//user.setAddrs(addrs);
+		
 		System.out.println(user);
 		service.save(user);
 		System.out.println(user);
@@ -41,9 +54,11 @@ public class UserTest extends BaseTest{
 	
 	@Test
 	public void queryUsers() {
-		List<User> users = service.queryUsers(null);
-		for (User user : users) {
-			System.out.println(user);
+		User user = new User();
+		user.setState(1);
+		List<User> users = service.queryUsers(user);
+		for (User u : users) {
+			System.out.println(u);
 		}
 	}
 	

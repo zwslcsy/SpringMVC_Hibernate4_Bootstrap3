@@ -1,12 +1,17 @@
 package com.zws.user.beans;
 
 import java.util.Date;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -35,6 +40,26 @@ public class User {
 	
 	@Column(name="DECRIPTION")
 	private String description;
+	
+//	@OneToMany(fetch=FetchType.EAGER,cascade=CascadeType.ALL)
+//	@JoinColumn(name="USER_ID")
+//	private List<Address> addrs;
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+//	public List<Address> getAddrs() {
+//		return addrs;
+//	}
+//
+//	public void setAddrs(List<Address> addrs) {
+//		this.addrs = addrs;
+//	}
 
 	public Long getId() {
 		return id;
