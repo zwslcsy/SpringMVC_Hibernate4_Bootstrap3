@@ -28,5 +28,24 @@ public class UserDao extends BaseDao<User> {
 	public List<User> getUsers(User user) {
 		return null;
 	}
+	
+	public User getUserById(Long id) {
+		String sql = "SELECT * FROM USER WHERE ID = ?"; 
+		User user = (User) getSession().createSQLQuery(sql).addEntity(User.class).setParameter(0, id).uniqueResult();
+		return user;
+	}
+	
+	public User getUserAllById(Long id) {
+		String sql = "FROM User WHERE id = " + id;
+		return (User)getSession().createQuery(sql).uniqueResult();
+	}
+	
+	public void update(User user) {
+		getSession().update(user);
+	}
+	
+	public void del(User user) {
+		getSession().delete(user);
+	}
 
 }

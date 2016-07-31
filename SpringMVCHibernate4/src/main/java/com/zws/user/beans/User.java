@@ -1,5 +1,6 @@
 package com.zws.user.beans;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
@@ -12,11 +13,14 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
 @Table(name="USER")
-public class User {
+public class User implements Serializable{
+
+	private static final long serialVersionUID = -8001923247364764298L;
 
 	@Id
 	@Column(name="ID")
@@ -41,9 +45,21 @@ public class User {
 	@Column(name="DECRIPTION")
 	private String description;
 	
-//	@OneToMany(fetch=FetchType.EAGER,cascade=CascadeType.ALL)
-//	@JoinColumn(name="USER_ID")
-//	private List<Address> addrs;
+	@OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER, targetEntity=Wife.class)
+	@JoinColumn(name="WIFE_ID",referencedColumnName="ID", insertable=true, updatable=true)
+	private Wife wife;
+	
+	@OneToMany(cascade=CascadeType.ALL, targetEntity=Car.class)
+	@JoinColumn(name="USER_ID", referencedColumnName="Id")
+	private List<Car> cars;
+
+	public Wife getWife() {
+		return wife;
+	}
+
+	public void setWife(Wife wife) {
+		this.wife = wife;
+	}
 
 	public String getDescription() {
 		return description;
@@ -52,14 +68,6 @@ public class User {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-
-//	public List<Address> getAddrs() {
-//		return addrs;
-//	}
-//
-//	public void setAddrs(List<Address> addrs) {
-//		this.addrs = addrs;
-//	}
 
 	public Long getId() {
 		return id;
@@ -117,10 +125,18 @@ public class User {
 		this.description = describe;
 	}
 
+	public List<Car> getCars() {
+		return cars;
+	}
+
+	public void setCars(List<Car> cars) {
+		this.cars = cars;
+	}
+
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", userName=" + userName + ", passwd="
 				+ passwd + ", state=" + state + ", createTime=" + createTime
-				+ ", updateTime=" + updateTime + ", describe=" + description + "]";
+				+ ", updateTime=" + updateTime + ", describe=" + description + ", addr="  + "]";
 	}
 }

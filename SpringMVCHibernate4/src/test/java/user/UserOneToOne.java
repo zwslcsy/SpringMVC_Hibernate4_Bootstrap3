@@ -17,11 +17,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.zws.user.beans.Address;
 import com.zws.user.beans.User;
+import com.zws.user.beans.Wife;
+import com.zws.user.dao.impl.UserDao;
 import com.zws.user.service.impl.UserService;
 
 import hibernate.BaseTest;
 
-public class UserTest extends BaseTest{
+public class UserOneToOne extends BaseTest{
 	@Autowired
 	private UserService service;
 
@@ -99,5 +101,77 @@ public class UserTest extends BaseTest{
 				e.printStackTrace();
 			}
 		}
+	}
+	@Test
+	public void getUserById() {
+		User user = service.getUserById(1l);
+		System.out.println(user);
+	}
+	
+	@Test
+	public void getUserAllById() {
+		User user = service.getUserAllById(1l);
+		System.out.println(user);
+		System.out.println(user.getWife());
+//		System.out.println(user.getAddrs());
+	}
+	
+	@Test
+	public void saveUserWife() {
+		User user = new User();
+		user.setUserName("刘小华");
+		user.setPasswd("9oiolkjm87yhjj");
+		user.setState(1);
+		user.setCreateTime(new Date());
+		user.setUpdateTime(new Date());
+		
+		Wife wife = new Wife();
+		wife.setBirthday(new Date());
+		wife.setEmail("fw98urf@qq.com");
+		wife.setName("yliq");
+		wife.setUser(user);
+		wife.setId(9l);
+		
+		user.setWife(wife);
+		service.save(user);
+	}
+	
+	@Test
+	public void update() {
+		User user = new User();
+		//user.setId(19l);
+		user.setUserName("刘小华3");
+		user.setPasswd("9oiolkjm87yhjj");
+		user.setState(2);
+		user.setCreateTime(new Date());
+		user.setUpdateTime(new Date());
+		
+		Wife wife = new Wife();
+		wife.setBirthday(new Date());
+		wife.setEmail("fw98urf@qq.com");
+		wife.setName("lili2");
+		//wife.setId(7l);
+		wife.setUser(user);
+		
+		user.setWife(wife);
+		service.update(user);
+	}
+	
+	@Test
+	public void del() {
+		User user = new User();
+		user.setId(20l);
+		/*user.setUserName("刘小华2");
+		user.setPasswd("9oiolkjm87yhjj");
+		user.setState(2);
+		user.setCreateTime(new Date());
+		user.setUpdateTime(new Date());*/
+		
+		Wife wife = new Wife();
+		wife.setId(9l);
+		
+		
+		user.setWife(wife);
+		service.del(user);
 	}
 }

@@ -7,11 +7,9 @@ import java.util.List;
 import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
-
-import com.zws.user.beans.User;
-
+import org.springframework.stereotype.Repository;
+@Repository
 public class BaseDao<T> {
 	@Autowired
 	private SessionFactory sessionFactory;
@@ -57,8 +55,8 @@ public class BaseDao<T> {
 		return ((BigInteger) getSession().createSQLQuery(sql).uniqueResult()).intValue();
 	}
 	
-	public void self() {
-		getSession().createCriteria(User.class).add(Restrictions.eq("userName", ""));
+	public void persist(Object obj) {
+		getSession().persist(obj);
 	}
 	
 }
